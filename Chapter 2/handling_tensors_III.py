@@ -20,7 +20,7 @@ plt.show()
 import tensorflow as tf
 
 x = tf.Variable(input_image,name='x')
-model = tf.initialize_all_variables()
+model = tf.global_variables_initializer()
 
 with tf.Session() as session:
     x = tf.transpose(x, perm=[1,0,2])

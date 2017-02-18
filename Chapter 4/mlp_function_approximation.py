@@ -56,7 +56,7 @@ train_op = tf.train.AdamOptimizer().minimize(tf.nn.l2_loss(model - Y))
 
 #Start the Learning phase
 sess = tf.Session()
-sess.run(tf.initialize_all_variables())
+sess.run(tf.global_variables_initializer())
 
 errors = []
 for i in range(NUM_EPOCHS):

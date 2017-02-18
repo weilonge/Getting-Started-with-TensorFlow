@@ -28,7 +28,7 @@ activation = tf.nn.softmax(tf.matmul(x, W) + b) # Softmax
 cross_entropy = y*tf.log(activation)
 cost = tf.reduce_mean\
        (-tf.reduce_sum\
-        (cross_entropy,reduction_indices=1))
+        (cross_entropy,axis=1))
 
 optimizer = tf.train.\
             GradientDescentOptimizer(learning_rate).minimize(cost) 
@@ -38,7 +38,7 @@ avg_set = []
 epoch_set=[]
 
 # Initializing the variables
-init = tf.initialize_all_variables()
+init = tf.global_variables_initializer()
 
 # Launch the graph
 with tf.Session() as sess:

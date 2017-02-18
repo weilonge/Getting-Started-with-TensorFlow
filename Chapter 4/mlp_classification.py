@@ -43,7 +43,7 @@ bias_output = tf.Variable(tf.random_normal([n_classes]))
 output_layer = tf.matmul(layer_2, output) + bias_output
 
 # cost function
-cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(output_layer, y))
+cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=output_layer, labels=y))
 # optimizer
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost) 
 #optimizer = tf.train.GradientDescentOptimizer(learning_rate=learning_rate).minimize(cost)
@@ -54,7 +54,7 @@ avg_set = []
 epoch_set=[]
     
 # Initializing the variables
-init = tf.initialize_all_variables()
+init = tf.global_variables_initializer()
 
 # Launch the graph
 with tf.Session() as sess:

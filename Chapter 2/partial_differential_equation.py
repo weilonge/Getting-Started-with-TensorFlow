@@ -64,7 +64,7 @@ step = tf.group(
   Ut.assign(Ut_))
 
 # Initialize state to initial conditions
-tf.initialize_all_variables().run()
+tf.global_variables_initializer().run()
 
 # Run 1000 steps of PDE
 for i in range(1000):

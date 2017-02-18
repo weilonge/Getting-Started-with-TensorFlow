@@ -20,15 +20,15 @@ test_pixel_tensor = tf.placeholder\
 distance = tf.reduce_sum\
            (tf.abs\
             (tf.add(train_pixel_tensor, \
-                    tf.neg(test_pixel_tensor))), \
-            reduction_indices=1)
+                    tf.negative(test_pixel_tensor))), \
+            axis=1)
 
 pred = tf.arg_min(distance, 0)
 
 # Testing and algorithm evaluation
 
 accuracy = 0.
-init = tf.initialize_all_variables()
+init = tf.global_variables_initializer()
 with tf.Session() as sess:
     sess.run(init)
     for i in range(len(test_list_of_values)):
